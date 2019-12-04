@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Kubernetes Secret</title>
+</head>
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<style type="text/css">
+    .form-style-10{
+        width:450px;
+        padding:30px;
+        margin:40px auto;
+        background: #FFF;
+        border-radius: 10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+        -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+        -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    }
+
+    .form-style-10 fieldset {
+        background-color:#CCC;
+        display: block;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+        border: 2px solid #fff;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+        -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+        -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+    }
+    .form-style-10 h1{
+        background: #2A88AD;
+        padding: 20px 30px 15px 30px;
+        margin: -30px -30px 30px -30px;
+        border-radius: 10px 10px 0 0;
+        -webkit-border-radius: 10px 10px 0 0;
+        -moz-border-radius: 10px 10px 0 0;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+        font: normal 30px 'Bitter', serif;
+        -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        border: 1px solid #257C9E;
+    }
+    .form-style-10 h1 > span{
+        display: block;
+        margin-top: 2px;
+        font: 13px Arial, Helvetica, sans-serif;
+    }
+    .form-style-10 label{
+        display: block;
+        font: 13px Arial, Helvetica, sans-serif;
+        color: #888;
+    }
+    .form-style-10 input[type="text"],
+    .form-style-10 input[type="date"],
+    .form-style-10 input[type="datetime"],
+    .form-style-10 input[type="email"],
+    .form-style-10 input[type="number"],
+    .form-style-10 input[type="search"],
+    .form-style-10 input[type="time"],
+    .form-style-10 input[type="url"],
+    .form-style-10 input[type="password"],
+    .form-style-10 textarea,
+    .form-style-10 select{
+        display: block;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+        border: 2px solid #fff;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+        -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+        -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+    }
+
+    .form-style-10 .section span {
+        background: #2A88AD;
+        padding: 5px 10px 5px 10px;
+        position: absolute;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border: 4px solid #fff;
+        font-size: 14px;
+        margin-left: -45px;
+        color: #fff;
+        margin-top: -3px;
+    }
+    .form-style-10 button[type="submit"]{
+        background: #2A88AD;
+        padding: 20px 30px 20px 30px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+        font: normal 30px 'Bitter', serif;
+        -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+        border: 1px solid #257C9E;
+        font-size: 15px;
+    }
+    .form-style-10 input[type="button"]:hover,
+    .form-style-10 input[type="submit"]:hover{
+        color:  #257C9E;
+        background:  #257C9E;
+        -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.27);
+        box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+    }
+    .form-style-10 .privacy-policy{
+        float: right;
+        width: 250px;
+        font: 12px Arial, Helvetica, sans-serif;
+        color: #4D4D4D;
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    .form-style-10 button[type="submitPost"]{
+        color:  #fff;
+        background:  #257C9E;
+        -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.27);
+        box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+    }
+</style>
+<form id="myForm" method="POST" name="vcube">
+    <ul class="form-style-10">
+        <div class="wrapper">
+            <div><label>Service Name</label><input type="text" name="serviceName" placeholder="Input Text Here" /></div>
+            <div>
+                <label>Server Location</label>
+                <select name="serverLocation">
+                    <option name="netzme">netzme</option>
+                    <option name="tokoNetzme">toko netzme</option>
+                </select>
+            </div>
+            <div>
+                <label>Environment</label>
+                <select name="environment">
+                    <option name="staging">staging</option>
+                    <option name="development">development</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button class="add_fields">Add Secrets</button>
+        </div>
+        <div>
+            <button  onclick="submitform()"  type="submitPost" style="float: right;">Submit</button>
+        </div>
+    </ul>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script>
+    //Add Input Fields
+    $(document).ready(function() {
+        var max_fields = 100; //Maximum allowed input fields
+        var wrapper    = $(".wrapper"); //Input fields wrapper
+        var add_button = $(".add_fields"); //Add button class or ID
+        var x = 0; //Initial input field is set to 1
+
+        //When user click on add input button
+        $(add_button).click(function(e){
+            e.preventDefault();
+            //Check maximum allowed input fields
+            if(x < max_fields){
+                x++; //input field increment
+                //add input field
+                $(wrapper).append('<fieldset>' +
+                    '<label>Key</label> <input type="text" name="key_'+(x)+'" placeholder="Input Text Here" /> ' +
+                    '<label>Value</label> <input type="text" name="value_'+(x)+'" placeholder="Input Text Here" />'+
+                    '<button class="remove_field">Remove Field</button>'+
+                    '</fieldset>');
+            }
+        });
+        //when user click on remove button
+        $(wrapper).on("click",".remove_field", function(e){
+            e.preventDefault();
+            $(this).parent('fieldset').remove(); //remove inout field
+            x--; //inout field decrement
+        })
+    });
+</script>
+<script type="text/javascript">
+    function submitform()
+    {
+        var elements = document.getElementById("myForm").elements;
+        var keys = [];
+        var valuex = [];
+        var obj = {};
+        var secret = {};
+        for(var i = 0 ; i < elements.length ; i++){
+            var item = elements.item(i);
+            var lengKey = item.name.split("_")
+            if ( lengKey[0] === "key" ) {
+                keys.push(item.value)
+            } else if (lengKey[0] === "value") {
+                valuex.push(item.value)
+            } else if (item.name !== "") {
+                obj[item.name] = item.value
+            }else{
+                continue
+            }
+        }
+        for (var i = 0; i < keys.length; i++){
+            secret[keys[i]] = valuex[i]
+        }
+        obj["secret"] = secret
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api", true);
+        xhr.responseType = 'text';
+        xhr.onload = function () {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    alert(xhr.responseText);
+                }else{
+                    alert(xhr.responseText)
+                }
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(obj));
+    }
+</script>
+</body>
+</html>

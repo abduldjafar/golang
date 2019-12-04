@@ -1,0 +1,16 @@
+#This is properties file for pusher-backend
+#created by : kotekaman
+#created at : February, 18th 2019
+
+[postgres]
+url="localhost"
+Port="5432"
+db="postgres"
+user="postgres"
+password="postgres"
+
+[mail]
+smtp="smtp.gmail.com"
+port="587"
+from=""
+password=""
